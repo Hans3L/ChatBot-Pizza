@@ -1,0 +1,614 @@
+{
+  "name": "Hansel&&GrettelPizzeria",
+  "intents": [
+    {
+      "intent": "ayuda",
+      "examples": [
+        {
+          "text": "No entiendo"
+        },
+        {
+          "text": "ayuda"
+        },
+        {
+          "text": "Que puedo hacer"
+        },
+        {
+          "text": "ayuda por favor"
+        }
+      ]
+    },
+    {
+      "intent": "salida",
+      "examples": [
+        {
+          "text": "no"
+        },
+        {
+          "text": "eso seria todo"
+        },
+        {
+          "text": "sácame"
+        },
+        {
+          "text": "cancelar"
+        },
+        {
+          "text": "salir"
+        },
+        {
+          "text": "he terminado"
+        }
+      ]
+    },
+    {
+      "intent": "orden",
+      "examples": [
+        {
+          "text": "Estoy hambriento"
+        },
+        {
+          "text": "Me gustaria una pizza"
+        },
+        {
+          "text": "Quiero pedir una pizza"
+        },
+        {
+          "text": "Quiero pedir una pizza grande"
+        },
+        {
+          "text": "¿Puede darme una pizza margarita, pequeña por favor?"
+        },
+        {
+          "text": "Tengo hambre"
+        },
+        {
+          "text": "Buenas noches"
+        },
+        {
+          "text": "Buenos días"
+        },
+        {
+          "text": "Buenas tardes"
+        },
+        {
+          "text": "ordenar"
+        }
+      ]
+    },
+    {
+      "intent": "reinicio",
+      "examples": [
+        {
+          "text": "ya no deseo"
+        },
+        {
+          "text": "empezar de nuevo"
+        },
+        {
+          "text": "borrar los pedidos"
+        },
+        {
+          "text": "volver a pedir"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity": "pizza_tipo",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "vegetariana",
+          "synonyms": [
+            "vegetariano"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "queso",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "margarita",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "cuatro quesos",
+          "synonyms": [
+		  "cuatro queso"
+		  ]
+        }
+      ]
+    },
+    {
+      "entity": "pizza_cubierta",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "champiñones",
+          "synonyms": [
+		    "champiñon",
+            "el champiñón"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "anchoas",
+          "synonyms": [
+            "anchoa"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "pepperoni",
+          "synonyms": [
+		    "peperoni",
+		    "pepperonis",
+		    "peperonis"
+		  ]
+        },
+        {
+          "type": "synonyms",
+          "value": "salchicha",
+          "synonyms": [
+		    "salchichas"]
+        },
+        {
+          "type": "synonyms",
+          "value": "queso",
+          "synonyms": [
+		    "quesos"
+		  ]
+        },
+        {
+          "type": "synonyms",
+          "value": "jamón",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "aceituna",
+          "synonyms": [
+            "olivo",
+			"aceitunas"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "salami",
+          "synonyms": [
+		  "El salchichón"]
+        },
+        {
+          "type": "synonyms",
+          "value": "cebolla",
+          "synonyms": []
+        }
+      ]
+    },
+    {
+      "entity": "pizza_lugar",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "ir",
+          "synonyms": [
+            "casa",
+            "para llevar",
+            "me lo llevo"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "quedarse",
+          "synonyms": [
+            "restaurante",
+            "comer en",
+            "comer allí",
+            "cenar en"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "extra_confirmado",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "no",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "si",
+          "synonyms": []
+        }
+      ]
+    },
+    {
+      "entity": "pizza_tamanio",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "grande",
+          "synonyms": [
+		  "grandota"]
+        },
+        {
+          "type": "synonyms",
+          "value": "mediana",
+          "synonyms": [
+            "regular",
+			"mediano"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "pequeño",
+          "synonyms": [
+		  "pequeña",
+		  "chica",
+		  "chico"
+		  ]
+        }
+      ]
+    }
+  ],
+  "language": "es",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "description": "Pedido básico de pizza con cobertura opcional, versión básica en español con un intento de proporcionar coberturas",
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "parent": "slot_3_1494421237824",
+      "context": {
+        "pizza_tamanio": "@pizza_tamanio"
+      },
+      "conditions": "@pizza_tamanio",
+      "event_name": "input",
+      "dialog_node": "handler_5_1494421285663",
+      "previous_sibling": "handler_4_1494421274527"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "Qué tamaño de pizza desea (pequeño, mediana o grande)"
+      },
+      "parent": "slot_3_1494421237824",
+      "event_name": "focus",
+      "dialog_node": "handler_4_1494421274527"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_16_1501069677090",
+      "event_name": "focus",
+      "dialog_node": "handler_18_1501069677090",
+      "previous_sibling": "handler_17_1501069677090"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_16_1501069677090",
+      "context": {
+        "pizza_lugar": "@pizza_lugar"
+      },
+      "conditions": "@pizza_lugar",
+      "event_name": "input",
+      "dialog_node": "handler_17_1501069677090"
+    },
+    {
+      "type": "slot",
+      "parent": "Pizza ordering",
+      "variable": "$pizza_tamanio",
+      "dialog_node": "slot_3_1494421237824",
+      "previous_sibling": "node_8_1494705793073"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "Pizza ordering",
+      "variable": "$pizza_tipo",
+      "dialog_node": "slot_6_1494421302730",
+      "previous_sibling": "slot_3_1494421237824"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Gracias por pedir una pizza $pizza_tamanio $pizza_tipo con <? $pizza_cubierta.join(', ') ?> ."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Pizza ordering",
+      "conditions": " $pizza_cubierta && $pizza_cubierta.size()>0",
+      "dialog_node": "node_19_1501070902849",
+      "previous_sibling": "node_7_1494705728892"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "Pizza ordering",
+      "metadata": {},
+      "variable": "$pizza_cubierta",
+      "dialog_node": "slot_1_1494704123064",
+      "previous_sibling": "slot_6_1494421302730"
+    },
+    {
+      "type": "slot",
+      "parent": "Pizza ordering",
+      "variable": "$pizza_lugar",
+      "dialog_node": "slot_16_1501069677090",
+      "previous_sibling": "slot_1_1494704123064"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Gracias por pedir una pizza $pizza_tamanio $pizza_tipo."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Pizza ordering",
+      "dialog_node": "node_8_1494705793073",
+      "previous_sibling": "node_19_1501070902849"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Gracias por pedir una pizza $pizza_tamanio $pizza_tipo con <? $pizza_cubierta.join(', ') ?> . Vamos a planear  <?$pizza_lugar == 'sitio'? 'que comer aquí.' :  ' te llevas esto a casa'?>."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Pizza ordering",
+      "conditions": "$pizza_cubierta && $pizza_cubierta.size()>0 && $pizza_lugar",
+      "dialog_node": "node_7_1494705728892",
+      "previous_sibling": "handler_10_1500495433159"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Puede elegir el tamaño (pequeño, mediana, grande), tipo (queso, margarita, cuatro quesos, o vegetariana) y ingredientes extras."
+          ]
+        }
+      },
+      "parent": "Pizza ordering",
+      "metadata": {},
+      "conditions": "#ayuda",
+      "event_name": "generic",
+      "dialog_node": "handler_10_1500495433159"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": []
+        }
+      },
+      "parent": "slot_6_1494421302730",
+      "conditions": "",
+      "event_name": "filled",
+      "dialog_node": "handler_5_1500492489376",
+      "previous_sibling": "handler_8_1494421347721"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_6_1494421302730",
+      "context": {
+        "pizza_tipo": "@pizza_tipo"
+      },
+      "conditions": "@pizza_tipo",
+      "event_name": "input",
+      "dialog_node": "handler_8_1494421347721",
+      "previous_sibling": "handler_7_1494421336855"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "¿Qué tipo de pizza quieres? Usted puede empezar a preparar su propia pizza a partir de 𝓺𝓾𝓮𝓼𝓸(clásica), o elegir 𝓬𝓾𝓪𝓽𝓻𝓸 𝓺𝓾𝓮𝓼𝓸𝓼, 𝓶𝓪𝓻𝓰𝓪𝓻𝓲𝓽𝓪, o 𝓿𝓮𝓰𝓮𝓽𝓪𝓻𝓲𝓪𝓷𝓸.."
+      },
+      "parent": "slot_6_1494421302730",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1494421336855"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_1_1494704123064",
+      "context": {
+        "pizza_cubierta": "@pizza_cubierta.values"
+      },
+      "metadata": {},
+      "conditions": "@pizza_cubierta.values",
+      "event_name": "input",
+      "dialog_node": "handler_2_1494704151628",
+      "previous_sibling": "handler_3_1494704424215"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Sin coberturas adicionales,  O.K."
+          ]
+        }
+      },
+      "parent": "slot_1_1494704123064",
+      "context": {
+        "pizza_cubierta": ""
+      },
+      "metadata": {},
+      "next_step": {
+        "behavior": "skip_all_slots"
+      },
+      "conditions": "@extra_confirmado:no",
+      "event_name": "nomatch",
+      "dialog_node": "handler_4_1494704594631",
+      "previous_sibling": "handler_4_1500489535722"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "O.K., añadiendo @pizza_cubierta.length más ingredientes a su pizza."
+          ]
+        }
+      },
+      "parent": "slot_1_1494704123064",
+      "metadata": {},
+      "conditions": "@pizza_cubierta.length > 1",
+      "event_name": "filled",
+      "dialog_node": "handler_6_1494704751936",
+      "previous_sibling": "handler_5_1494704673688"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Muy bien, ¿qué ingredientes te gustaría? Tenemos pepperoni, salchichas, jamón, champiñones, cebollas, anchoa y aceitunas."
+          ]
+        }
+      },
+      "parent": "slot_1_1494704123064",
+      "metadata": {},
+      "conditions": "@extra_confirmado:si",
+      "event_name": "nomatch",
+      "dialog_node": "handler_8_1500493007853",
+      "previous_sibling": "handler_4_1494704594631"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "O.K., añadiendo un extra @cubierta"
+          ]
+        }
+      },
+      "parent": "slot_1_1494704123064",
+      "metadata": {},
+      "conditions": "@pizza_cubierta.length == 1",
+      "event_name": "filled",
+      "dialog_node": "handler_5_1494704673688",
+      "previous_sibling": "handler_2_1494704151628"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": []
+        }
+      },
+      "parent": "slot_1_1494704123064",
+      "metadata": {},
+      "event_name": "filled",
+      "dialog_node": "handler_4_1500489535722",
+      "previous_sibling": "handler_6_1494704751936"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "¿Quiere elegir cobertura adicional?, con costo "
+      },
+      "parent": "slot_1_1494704123064",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_3_1494704424215"
+    },
+    {
+      "type": "frame",
+      "title": "Pizza ordering",
+      "output": {},
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "#orden",
+      "digress_in": "does_not_return",
+      "dialog_node": "Pizza ordering",
+      "digress_out": "allow_all",
+      "previous_sibling": "Welcome",
+      "digress_out_slots": "allow_all"
+    },
+    {
+      "type": "standard",
+      "title": "Fallback",
+      "output": {
+        "text": {
+          "values": [
+            "Ayuda 1» Puede pedir una pizza pequeña, mediana o grande. Los tipos que tenemos son queso, margarita, cuatro quesos, y vegetariana, se pueden añadir más ingredientes.",
+            "Ayuda 2» Si quieres empezar con queso, puedes añadir ingredientes. Ofrecemos pepperoni, salchichas, jamón, aceitunas, cebolla, anchoas, champiñones o salami. Empecemos 🤗 🍕 🤗"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "digress_in": "not_available",
+      "dialog_node": "Fallback",
+      "digress_out": "allow_all",
+      "previous_sibling": "Reset"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": {
+          "values": [
+            "Empecemos de nuevo."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "context": {
+        "pizza_tamanio": null,
+        "pizza_tipo": null,
+        "pizza_lugar": null,
+        "pizza_cubierta": null
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "Welcome"
+      },
+      "conditions": "#reinicio",
+      "dialog_node": "Reset",
+      "previous_sibling": "Pizza ordering"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": {
+          "values": [
+            "Bienvenido a la Pizzeria H&G Chat, puede pedir tipos y tamaños de pizza, también añadir ingredientes seleccionados. Pida ayuda si es necesario."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "workspace_id": "0cfd1c60-30dd-42d1-9f61-a76b171b938e",
+  "counterexamples": [],
+  "learning_opt_out": false,
+  "status": "Available"
+}
